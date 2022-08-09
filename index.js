@@ -6,7 +6,7 @@ app.use(express.json());
 // routes starts here
 app.post("/slack/events", (req, res) => {
   res.send({
-    challange: req.body.challange,
+    challenge: req.body.challenge,
   });
 });
 
