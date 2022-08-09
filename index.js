@@ -10,6 +10,10 @@ app.post("/slack/events", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Hello there , If you this it means server is up");
+});
+
 app.listen(PORT, () => {
   console.log("Magic happens at port", PORT);
 });
