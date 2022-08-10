@@ -1,11 +1,16 @@
+const path = require('path');
 const { WebClient } = require("@slack/web-api");
-const { createEventAdaptor } = require("@slack/web-api");
+const { createEventAdapter } = require("@slack/web-api");
+
+require('dotenv').config({
+    path: path.resolve(__dirname, "./test.env");
+})
 
 const port = process.env.PORT || 3000;
 const signInSecret = process.env.SIGNIN_SECRET;
 const slackToken = process.env.AUTH_TOKEN;
 
-const slackEvent = createEventAdaptor(signInSecret);
+const slackEvent = createEventAdapter(signInSecret);
 const slackClient = new WebClient(slackToken);
 
 // subscribe events here
