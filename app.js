@@ -2,6 +2,8 @@ const path = require("path");
 const { WebClient } = require("@slack/web-api");
 const { createEventAdapter } = require("@slack/events-api");
 
+const { request_info_template } = require("./template");
+
 require("dotenv").config({
   path: path.resolve(__dirname, "./test.env"),
 });
@@ -22,6 +24,7 @@ slackEvent.on("app_mention", (evt) => {
       await slackClient.chat.postMessage({
         channel: evt.channel,
         text: `Hello <@${evt.user}> :tada`,
+        attachments: [request_info_template],
       });
     } catch (err) {
       console.log(err);
