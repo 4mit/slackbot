@@ -79,7 +79,7 @@ const request_info_template = {
           {
             text: {
               type: "plain_text",
-              text: "*this is plain_text text*",
+              text: "dev1",
               emoji: true,
             },
             value: "value-0",
@@ -87,7 +87,7 @@ const request_info_template = {
           {
             text: {
               type: "plain_text",
-              text: "*this is plain_text text*",
+              text: "qa1",
               emoji: true,
             },
             value: "value-1",
@@ -95,7 +95,15 @@ const request_info_template = {
           {
             text: {
               type: "plain_text",
-              text: "*this is plain_text text*",
+              text: "prod1",
+              emoji: true,
+            },
+            value: "value-2",
+          },
+          {
+            text: {
+              type: "plain_text",
+              text: "instage",
               emoji: true,
             },
             value: "value-2",
