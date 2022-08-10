@@ -1,10 +1,10 @@
-const path = require('path');
+const path = require("path");
 const { WebClient } = require("@slack/web-api");
-const { createEventAdapter } = require("@slack/web-api");
+const { createEventAdapter } = require("@slack/events-api");
 
-require('dotenv').config({
-    path: path.resolve(__dirname, "./test.env");
-})
+require("dotenv").config({
+  path: path.resolve(__dirname, "./test.env"),
+});
 
 const port = process.env.PORT || 3000;
 const signInSecret = process.env.SIGNIN_SECRET;
