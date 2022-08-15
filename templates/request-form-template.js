@@ -4,7 +4,7 @@ const request_info_template = {
       type: "section",
       text: {
         type: "plain_text",
-        text: ":wave: Hey There!\n\nPlease provide below information ",
+        text: "Please provide below information ",
         emoji: true,
       },
     },
@@ -162,12 +162,13 @@ const request_info_template = {
     },
     {
       type: "actions",
+      block_id: "submit_request_form",
       elements: [
         {
           type: "button",
           text: {
             type: "plain_text",
-            text: "Submit",
+            text: "Submit Request",
             emoji: true,
           },
           value: "click_me_123",
