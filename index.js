@@ -5,6 +5,7 @@ const { createMessageAdapter } = require("@slack/interactive-messages");
 const { WebClient } = require("@slack/web-api");
 const { createEventAdapter } = require("@slack/events-api");
 const { request_info_template } = require("./templates/request-form-template");
+const { attachmentParser } = require("./utils/attachmentValuesParser");
 
 require("dotenv").config({
   path: path.resolve(__dirname, "./test.env"),
@@ -61,15 +62,62 @@ slackEvent.on("error", console.error);
 slackInteractions.action({ type: "button" }, (payload, respond) => {
   // Logs the contents of the action to the console
   console.log("payload", payload);
-  console.log(JSON.stringify(payload.state.values));
-  // Replace the original message again after the deferred work completes.
-  respond({ text: "Processing complete.", replace_original: true });
-  // Return a replacement message
-  return { text: "Processing..." };
+  const submmittedData = attachmentParser(payload.state.values);
+  const requestData = JSON.stringify(submmittedData, null, 2);
+
+  (async () => {
+    try {
+      await slackClient.chat.postMessage({
+        channel: "C03SYJ44292",
+        text: `Hi :wave:`,
+        attachments: [
+          {
+            color: "#f2c744",
+            blocks: [
+              {
+                type: "section",
+                text: {
+                  type: "mrkdwn",
+                  text: "You have a new request",
+                },
+              },
+              {
+                type: "section",
+                fields: [
+                  {
+                    type: "mrkdwn",
+                    text: "*Name:*\n" + submmittedData[0].value,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: "*Role:*\n" + submmittedData[1].value,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: "*Env:*\n" + submmittedData[2].value,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: "*Approver:*\n" + submmittedData[3].value,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+      respond({ text: "Processing complete.", replace_original: true });
+      return { text: "Processing..." };
+    } catch (err) {
+      console.log(err);
+      return { text: "Failed Processing..." };
+    }
+  })();
 });
 
 // app specific
 app.post("/slack/events", (req, res) => {
+  console.log("validate");
   res.send({
     challenge: req.body.challenge,
   });

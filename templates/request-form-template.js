@@ -1,10 +1,10 @@
 const request_info_template = {
   blocks: [
     {
-      type: "section",
+      type: "header",
       text: {
         type: "plain_text",
-        text: "Please provide below information ",
+        text: "Please provide below information",
         emoji: true,
       },
     },
@@ -39,7 +39,7 @@ const request_info_template = {
               text: "admin",
               emoji: true,
             },
-            value: "value-0",
+            value: "admin",
           },
           {
             text: {
@@ -47,7 +47,7 @@ const request_info_template = {
               text: "operator",
               emoji: true,
             },
-            value: "value-1",
+            value: "operator",
           },
           {
             text: {
@@ -55,7 +55,7 @@ const request_info_template = {
               text: "other",
               emoji: true,
             },
-            value: "value-2",
+            value: "other",
           },
         ],
         action_id: "static_select-action",
@@ -82,7 +82,7 @@ const request_info_template = {
               text: "dev1",
               emoji: true,
             },
-            value: "value-0",
+            value: "dev1",
           },
           {
             text: {
@@ -90,7 +90,7 @@ const request_info_template = {
               text: "qa1",
               emoji: true,
             },
-            value: "value-1",
+            value: "qa1",
           },
           {
             text: {
@@ -98,7 +98,7 @@ const request_info_template = {
               text: "prod1",
               emoji: true,
             },
-            value: "value-2",
+            value: "prod1",
           },
           {
             text: {
@@ -106,7 +106,7 @@ const request_info_template = {
               text: "instage",
               emoji: true,
             },
-            value: "value-2",
+            value: "instage",
           },
         ],
         action_id: "multi_static_select-action",
@@ -133,7 +133,7 @@ const request_info_template = {
               text: "Approver1 ",
               emoji: true,
             },
-            value: "value-0",
+            value: "Approver1 ",
           },
           {
             text: {
@@ -141,7 +141,7 @@ const request_info_template = {
               text: "Approver 2",
               emoji: true,
             },
-            value: "value-1",
+            value: "Approver 2",
           },
           {
             text: {
@@ -149,7 +149,7 @@ const request_info_template = {
               text: "Approver 3",
               emoji: true,
             },
-            value: "value-2",
+            value: "Approver 3",
           },
         ],
         action_id: "static_select-action",
