@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon bolt.js",
+    "start:prod": "pm2 start index.js"
   },
   "keywords": [],
   "author": "amit",
   "license": "ISC",
   "dependencies": {
+    "@slack/bolt": "^3.12.1",
     "@slack/events-api": "^3.0.1",
     "@slack/interactive-messages": "^2.0.2",
     "@slack/web-api": "^6.7.0",
+    "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "dotenv": "16.0.0",
     "moment": "^2.29.1",
